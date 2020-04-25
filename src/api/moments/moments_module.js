@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     // Accepted query parameters: from, name
     const from = req.query.from || req.query.name;
     const query = {};
-    if (from != "") query.from = from;
+    if (from && from != "") query.from = from;
     if (debug) console.log(query);
     Moment.find(query, (err, allMoments) => {
         if (err || allMoments == []) {
