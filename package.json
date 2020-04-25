@@ -1,0 +1,32 @@
+{
+  "name": "mcrpc-web-server",
+  "version": "0.1.0",
+  "description": "A simple express app with mongodb connection to handle http requests and execute CRUD operations for frontend and the mcrpc-discord-bot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpeter1119/mcrpc-web-server.git"
+  },
+  "keywords": [
+    "rpg"
+  ],
+  "author": "Peter Vertesi",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vpeter1119/mcrpc-web-server/issues"
+  },
+  "homepage": "https://github.com/vpeter1119/mcrpc-web-server#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.10",
+    "mongoose-unique-validator": "^2.0.3"
+  }
+}
