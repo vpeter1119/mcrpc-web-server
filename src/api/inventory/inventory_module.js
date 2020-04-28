@@ -24,8 +24,8 @@ router.get("/", (req, res) => {
         } else {
             data = {
                 ok: true,
-                count: allMoments.length,
-                results: MapData(allMoments)
+                count: list.length,
+                results: MapData(list)
             }
             res.status(200).json(data);
         }
