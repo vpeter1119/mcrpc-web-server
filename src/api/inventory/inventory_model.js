@@ -6,10 +6,14 @@ const options = {
 
 const inventorySchema = mongoose.Schema(
     {
+        index: { type: String, unique: true },
         character_name: { type: String },
         user_id: { type: String },
         password: { type: String },
-        containers: { type: Array }
+        containers: {
+            default: { type: Array }, // for items not placed in any other container
+            custom: { type: Array } // for backpack, sack, pouch, etc.
+        }
     },
     options
 );
