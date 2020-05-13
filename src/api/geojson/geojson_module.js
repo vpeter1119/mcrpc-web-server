@@ -1,4 +1,5 @@
 const debug = global.debug;
+const config = require("../../config/config");
 const _ = require("lodash");
 
 // Import dependencies
@@ -39,7 +40,7 @@ router.get("/", (req, res) => {
 });
 // READ ONE
 router.get("/:id", (req, res) => {
-    // Retrieve inventory with specified index
+    // Retrieve GeoJSON feature with specified id
     const id = req.params.id;
     GeoJSON.findOne({ _id: id }, (err, data) => {
         if (!err && data) {
@@ -55,16 +56,24 @@ router.get("/:id", (req, res) => {
 });
 // CREATE ONE
 router.post("/", (req, res) => {
+    // Required query parameter: token (for basic authentication, temporary solution)
+    if (req.query.token != config.token) {
+        res.status(403).json({
+            ok: false,
+            message: "Authentication required."
+        })
+        return;
+    }
     // Prepare data
     const input = req.body;
     if (debug) console.log(input);
     const data = {
-        type: input.type,
+        type: "Feature",
         geometry: input.geometry,
         properties: input.properties
     }
     if (debug) console.log(data);
-    // Create new inventory
+    // Create new entry
     GeoJSON.create(data, (err, newEntry) => {
         if (!err && newEntry) {
             res.status(201).json({
@@ -112,11 +121,6 @@ function MapData(data) {
         }
     }
     return mappedData;
-}
-
-// Handle mongoose error
-function HandleError(code) {
-    if (code == 11000) return "Character with same index already exists. Please use a different name.";
 }
 
 // Export router
