@@ -4,6 +4,7 @@ var router = require("express").Router();
 router.use("/moments", require("./moments/moments_module"));
 router.use("/beverages", require("./beverages/beverages_module"));
 router.use("/inventory", require("./inventory/inventory_module"));
+router.use("/geojson", require("./geojson/geojson_module"));
 
 // Create an array of routes => ["/<route1>","/<route2>"]
 let routes = [];
