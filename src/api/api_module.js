@@ -1,10 +1,10 @@
 var router = require("express").Router();
 
 // Declare the API endpoints and import the modules
-router.use("/moments", require("./moments/moments_module"));
 router.use("/beverages", require("./beverages/beverages_module"));
-router.use("/inventory", require("./inventory/inventory_module"));
 router.use("/geojson", require("./geojson/geojson_module"));
+router.use("/inventory", require("./inventory/inventory_module"));
+router.use("/moments", require("./moments/moments_module"));
 router.use("/notes", require("./notes/notes_module"));
 
 // Create an array of routes => ["/<route1>","/<route2>"]
