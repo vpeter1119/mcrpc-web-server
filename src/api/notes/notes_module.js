@@ -1,4 +1,5 @@
 const debug = global.debug;
+const config = require("../../config/config");
 
 // Import dependencies
 var router = require("express").Router();
@@ -42,6 +43,35 @@ router.get("/:user", (req, res) => {
 })
 // READ ONE
 // CREATE ONE
+router.post('/', (req, res) => {
+    // 
+    if (req.query.token != config.token) {
+        res.status(403).json({
+            message: "Authentication required."
+        });
+        return;
+    }
+    var input = req.body;
+    if (debug) console.log(input);
+    var data = {
+        user: input.user,
+        category: input.category,
+        text: input.text
+    };
+    Note.create(data, (err, newNote) => {
+        if (!err) {
+            res.status(201).json({
+                message: "Your note was saved."
+            });
+            if (debug) console.log(newNote);
+        } else {
+            res.status(500).json({
+                message: "Something went wrong. Please try again later."
+            });
+            if (debug) console.log(err);
+        }
+    });
+})
 
 //////// ROUTES END ////////
 
