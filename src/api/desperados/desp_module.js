@@ -4,6 +4,7 @@ const _ = require("lodash");
 
 let attributes = require("./data/attributes.json");
 let templates = require("./data/templates.json");
+let skills = require("./data/skills.json");
 
 // Import dependencies
 var router = require("express").Router();
@@ -188,6 +189,13 @@ router.get("/templates", (req, res) => {
     res.status(200).json({
         ok: true,
         result: templates
+    });
+})
+
+router.get("/skills", (req, res) => {
+    res.status(200).json({
+        ok: true,
+        result: skills
     });
 })
 
