@@ -3,6 +3,7 @@ const debug = global.debug;
 const _ = require("lodash");
 
 let attributes = require("./data/attributes.json");
+let templates = require("./data/templates.json");
 
 // Import dependencies
 var router = require("express").Router();
@@ -180,6 +181,13 @@ router.get("/attributes", (req, res) => {
     res.status(200).json({
         ok: true,
         result: attributes
+    });
+})
+
+router.get("/templates", (req, res) => {
+    res.status(200).json({
+        ok: true,
+        result: templates
     });
 })
 

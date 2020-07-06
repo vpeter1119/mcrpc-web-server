@@ -1,0 +1,158 @@
+[
+  {
+    "name": "gunslinger",
+    "desc": "",
+    "mods": [
+      {
+        "attribute": "agility",
+        "value": 1
+      },
+      {
+        "attribute": "resolve",
+        "value": 1
+      }
+    ],
+    "skills": [
+      {
+        "name": "ranged-combat"
+      },
+      {
+        "name": "horsemanship"
+      }
+    ],
+    "specials": [
+      {
+        "name": "Distraction",
+        "desc": ""
+      },
+      {
+        "name": "Duel Pistols",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "name": "trapper",
+    "desc": "",
+    "mods": [
+      {
+        "attribute": "brawn",
+        "value": 1
+      },
+      {
+        "attribute": "insight",
+        "value": 1
+      }
+    ],
+    "skills": [
+      {
+        "name": "athletics"
+      },
+      {
+        "name": "survival"
+      }
+    ],
+    "specials": [
+      {
+        "name": "Bear Trap",
+        "desc": ""
+      },
+      {
+        "name": "Animal Call",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "name": "gambler",
+    "desc": "",
+    "mods": [
+      {
+        "attribute": "agility",
+        "value": 1
+      },
+      {
+        "attribute": "wits",
+        "value": 1
+      }
+    ],
+    "skills": [
+      {
+        "name": "empathy"
+      },
+      {
+        "name": "perception"
+      }
+    ],
+    "specials": [
+      {
+        "name": "Beguiling Perfume",
+        "desc": ""
+      },
+      {
+        "name": "Disguise",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "name": "mountebank",
+    "desc": "",
+    "mods": [
+      {
+        "attribute": "mettle",
+        "value": 1
+      },
+      {
+        "attribute": "wits",
+        "value": 1
+      }
+    ],
+    "skills": [
+      {
+        "name": "medicine"
+      },
+      {
+        "name": "science"
+      }
+    ],
+    "specials": [
+      {
+        "name": "Gas Vial",
+        "desc": ""
+      },
+      {
+        "name": "Bandages",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "name": "voodoo-priest",
+    "desc": "",
+    "mods": [
+      {
+        "attribute": "mettle",
+        "value": 1
+      },
+      {
+        "attribute": "insight",
+        "value": 1
+      }
+    ],
+    "skills": [
+      {
+        "name": "humanities"
+      },
+      {
+        "name": "conceal"
+      }
+    ],
+    "specials": [
+      {
+        "name": "Voodoo spell",
+        "desc": ""
+      }
+    ]
+  }
+]
