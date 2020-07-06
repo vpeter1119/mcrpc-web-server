@@ -1,0 +1,26 @@
+[
+  {
+    "name": "brawn",
+    "desc": "Brawn expresses the character's raw bodily strength. You would use it to lift heavy loads or to force open a door.'"
+  },
+  {
+    "name": "agility",
+    "desc": "Agility covers the agility, coordination and general dexterity of a character. Staying on a horse while it is racing along requires Agility, as is keeping your balance above a treacherous chasm."
+  },
+  {
+    "name": "mettle",
+    "desc": "The character's Mettle is an expression of their overall health and physical resicilence. High Mettle helps to overcome severe illness or to withstand the parching prairie sun."
+  },
+  {
+    "name": "insight",
+    "desc": "Insight covers a character's general perceptiveness, the sharpness of their senses, and their effective judgement of human character. Characters with high Insight are better at determining if somebody is lying to them or guessing if there is an ambush waiting for them just around the corner.'"
+  },
+  {
+    "name": "wits",
+    "desc": "Wits provides information about how quick-witted a character is, as well as their overall knowledge. Recognizing the voice of a distant acquaintance or detecting errors in a bank heist plan is easier for characters with high Wits."
+  },
+  {
+    "name": "resolve",
+    "desc":  "Resolve respresents a character's strength of personality, their motivation, and their willpower. It comes in handy, for example, when you find yourself under pressure but must not lose your cool."
+  }
+]
