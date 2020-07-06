@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const debug = global.debug;
 const _ = require("lodash");
 
+let attributes = require("./data/attributes.json");
+
 // Import dependencies
 var router = require("express").Router();
 
@@ -170,6 +172,15 @@ router.get("/users/:id/characters/:index", (req, res) => {
             }
         })
     }    
+})
+
+// RULES
+
+router.get("/attributes", (req, res) => {
+    res.status(200).json({
+        ok: true,
+        result: attributes
+    });
 })
 
 // MISC
