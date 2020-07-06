@@ -1,7 +1,7 @@
 [
   {
     "name": "brawn",
-    "desc": "Brawn expresses the character's raw bodily strength. You would use it to lift heavy loads or to force open a door.'"
+    "desc": "Brawn expresses the character's raw bodily strength. You would use it to lift heavy loads or to force open a door."
   },
   {
     "name": "agility",
@@ -13,7 +13,7 @@
   },
   {
     "name": "insight",
-    "desc": "Insight covers a character's general perceptiveness, the sharpness of their senses, and their effective judgement of human character. Characters with high Insight are better at determining if somebody is lying to them or guessing if there is an ambush waiting for them just around the corner.'"
+    "desc": "Insight covers a character's general perceptiveness, the sharpness of their senses, and their effective judgement of human character. Characters with high Insight are better at determining if somebody is lying to them or guessing if there is an ambush waiting for them just around the corner."
   },
   {
     "name": "wits",
