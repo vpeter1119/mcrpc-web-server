@@ -178,6 +178,18 @@ router.get("/users/:id/characters/:index", (req, res) => {
 
 // RULES
 
+router.get("/rules", (req, res) => {
+    const rulesData = {
+        attributes: attributes,
+        templates: templates,
+        skill: skills
+    }
+    res.status(200).json({
+        ok: true,
+        result: rulesData
+    });
+})
+
 router.get("/attributes", (req, res) => {
     res.status(200).json({
         ok: true,
