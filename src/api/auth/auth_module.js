@@ -45,6 +45,8 @@ router.post("/login", (req, res, next) => {
         return res.status(404).json({
           message: ("No user with username " + req.body.username + " found.")
         });
+      } else if (!user.isActive) {
+        return res.status(401).json({ message: "User not activated." });
       }
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
