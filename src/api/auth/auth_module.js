@@ -1,3 +1,4 @@
+const debug = global.debug;
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -11,14 +12,14 @@ router.post("/register", (req, res, next) => {
     const user = new User({
       email: req.body.email,
       username: req.body.username,
-      password: hash
+      password: hash,
+      isAdmin: false
     });
     user
       .save()
       .then(result => {
         res.status(201).json({
-          message: "User created!",
-          result: result
+          message: `User with username=${result.username} id=${result._id} created!`
         });
       })
       .catch(err => {
@@ -33,13 +34,13 @@ router.post("/login", (req, res, next) => {
   let fetchedUser;
   let isAdmin = false;
   var origin = req.headers.origin;
-  console.log(
+  if (debug) console.log(
     "Login request from " + origin + " with username: " + req.body.username
   );
   User.findOne({ username: req.body.username })
     .then(user => {
       if (!user) {
-		console.log("Authentication failed: no user found.");
+        if (debug) console.log("Authentication failed: no user found.");
         return res.status(404).json({
           message: ("No user with username " + req.body.username + " found.")
         });
@@ -49,24 +50,17 @@ router.post("/login", (req, res, next) => {
     })
     .then(result => {
       if (!result) {
-		console.log("Authentication failed: incorrect password.");
+		if (debug) console.log("Authentication failed: incorrect password.");
         return res.status(401).json({
           message: "Auth failed"
         });
-      }
-      if (fetchedUser._id == process.env.ADMIN_ID) {
-        isAdmin = true;
-        console.log("isAdmin status: " + isAdmin);
-      } else {
-        console.log(fetchedUser._id);
-        console.log(process.env.ADMIN_ID);
-        console.log("isAdmin status: " + isAdmin);
       }
       const token = jwt.sign(
         {
           username: fetchedUser.username,
           email: fetchedUser.email,
-          userId: fetchedUser._id
+          userId: fetchedUser._id,
+          isAdmin: fetchedUser.isAdmin
         },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
@@ -74,13 +68,15 @@ router.post("/login", (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-		userData: fetchedUser,
-        userId: fetchedUser._id,
-        isAdmin: isAdmin
+		userData: {
+            id: fetchedUser._id,
+            username: fetchedUser.username,
+            email: fetchedUser.email
+        }
       });
     })
     .catch(err => {
-		console.log("Authentication failed: other error.");
+		if (debug) console.log("Authentication failed: other error.");
 		console.log(err);
       return res.status(500).json({
         message: "Auth failed: server error."
