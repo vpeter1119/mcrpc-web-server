@@ -14,7 +14,8 @@ router.post("/register", (req, res, next) => {
       email: req.body.email,
       username: req.body.username,
       password: hash,
-      isAdmin: false
+      isAdmin: false,
+      isActive: false,
     });
     user
       .save()
