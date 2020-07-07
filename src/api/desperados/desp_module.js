@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const debug = global.debug;
 const _ = require("lodash");
+const CheckAuth = require("../auth/check-auth");
 
 let attributes = require("./data/attributes.json");
 let templates = require("./data/templates.json");
@@ -10,7 +11,6 @@ let skills = require("./data/skills.json");
 var router = require("express").Router();
 
 // Import mongoose model
-//const DespUser = require("./desp_user_model.js");
 const User = require("../auth/user_model");
 
 ///////// ROUTES BEGIN ////////
@@ -18,7 +18,7 @@ const User = require("../auth/user_model");
 // CHARACTERS
 
 // CREATE CHARACTER
-router.post("/users/:id/characters", (req, res) => {
+router.post("/users/:id/characters", CheckAuth, (req, res, next) => {
     // Accepted query parameters: none
     const id = req.params.id;
     var isValidId = ValidateId(id, res);
@@ -64,7 +64,7 @@ router.post("/users/:id/characters", (req, res) => {
     }    
 });
 // VIEW ALL CHARACTERS (OF USER)
-router.get("/users/:id/characters", (req, res) => {
+router.get("/users/:id/characters", CheckAuth, (req, res, next) => {
     const id = req.params.id;
     var isValidId = ValidateId(id, res);
     if (isValidId) {
@@ -95,7 +95,7 @@ router.get("/users/:id/characters", (req, res) => {
     }
 })
 // VIEW ONE CHARACTER
-router.get("/users/:id/characters/:index", (req, res) => {
+router.get("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
     const id = req.params.id;
     var isValidId = ValidateId(id, res);
     if (isValidId) {
