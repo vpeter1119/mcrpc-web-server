@@ -1,4 +1,5 @@
 const debug = global.debug;
+const config = require("../../config/config");
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -32,7 +33,6 @@ router.post("/register", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  let isAdmin = false;
   var origin = req.headers.origin;
   if (debug) console.log(
     "Login request from " + origin + " with username: " + req.body.username
@@ -62,7 +62,7 @@ router.post("/login", (req, res, next) => {
           userId: fetchedUser._id,
           isAdmin: fetchedUser.isAdmin
         },
-        process.env.JWT_SECRET,
+        config.jwtSecret,
         { expiresIn: "1h" }
       );
       res.status(200).json({
