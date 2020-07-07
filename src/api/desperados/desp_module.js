@@ -10,96 +10,14 @@ let skills = require("./data/skills.json");
 var router = require("express").Router();
 
 // Import mongoose model
-const DespUser = require("./desp_user_model.js");
+//const DespUser = require("./desp_user_model.js");
+const User = require("../auth/auth_module");
 
 ///////// ROUTES BEGIN ////////
 
-// USERS
-
-// READ ALL
-router.get("/users", (req, res) => {
-    // Accepted query parameters: none
-    const query = {};
-    // Add any query parameters
-    if (debug) console.log(query);
-    DespUser.find(query, (err, list) => {
-        if (err || list == []) {
-            data = {
-                ok: false,
-                count: 0,
-                results: []
-            }
-            res.status(404).json(data);
-        } else {
-            data = {
-                ok: true,
-                count: list.length,
-                results: MapData(list)
-            }
-            res.status(200).json(data);
-        }
-    });
-});
-// READ ONE
-router.get("/users/:id", (req, res) => {
-    // Retrieve user by id
-    const id = req.params.id;
-    var isValidId = ValidateId(id,res);
-    if (debug) console.log("isValidId="+isValidId);
-    if (isValidId) {
-        DespUser.findOne({ _id: id }, (err, foundUser) => {
-            if (!err && foundUser) {
-                if (debug) console.log(foundUser);
-                res.status(200).json({
-                    ok: true,
-                    result: MapData(foundUser)
-                });
-            } else {
-                if (err && debug) console.log(err);
-                res.status(404).json({
-                    ok: false,
-                    message: "User not found.",
-                });
-            }
-        });
-    }
-});
-// CREATE ONE == REGISTER
-router.post("/users", (req, res) => {
-    // Prepare data
-    const input = req.body;
-    if (debug) console.log(input);
-    const data = {
-        username: input.username,
-        email: input.email,
-        password: input.password,
-        active: false,
-        characters: [],
-    }
-    // Create new inventory
-    DespUser.create(data, (err, newUser) => {
-        if (!err && newUser) {
-            res.status(201).json({
-                ok: true,
-                message: `New user created with id ${newUser.id}`
-            });
-        } else {
-            if (debug && err) console.log(err);
-            res.status(500).json({
-                ok: false,
-                message: "Something went wrong when creating new inventory.",
-                error: {
-                    code: err.code || 0,
-                    msg: HandleError(err.code) || "No error message."
-                }
-            });
-        }
-    });
-});
-
 // CHARACTERS
 
-// UPDATE ONE == CREATE CHARACTER
+// CREATE CHARACTER
 router.post("/users/:id", (req, res) => {
     // Accepted query parameters: none
     const id = req.params.id;
@@ -118,7 +36,7 @@ router.post("/users/:id", (req, res) => {
             equipment: input.equipment || [],
         }
         if (debug) console.log(character);
-        DespUser.findOneAndUpdate(
+        User.findOneAndUpdate(
             { _id: id },
             { $push: { characters: character } },
             (err, newCharacter) => {
@@ -142,14 +60,14 @@ router.post("/users/:id", (req, res) => {
         );
     }    
 });
-// READ ONE == VIEW CHARACTER
+// VIEW ONE CHARACTER
 router.get("/users/:id/characters/:index", (req, res) => {
     const id = req.params.id;
     var isValidId = ValidateId(id, res);
     if (isValidId) {
         const index = req.params.index;
         if (debug) console.log("index="+index);
-        DespUser.findOne({ _id: id }, (err, foundUser) => {
+        User.findOne({ _id: id }, (err, foundUser) => {
             if (!err && foundUser) {
                 let character = foundUser.characters.find(character => {
                     return character.index == index;
