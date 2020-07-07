@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  discordUser: { type: String }
 }, { timestamps: true });
 
-userSchema.plugin(uniqueValidator);
+//userSchema.plugin(uniqueValidator);
 
 const User = mongoose.model("User", userSchema);
 
