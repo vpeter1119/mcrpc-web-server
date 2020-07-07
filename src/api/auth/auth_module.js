@@ -40,43 +40,36 @@ router.post("/login", (req, res, next) => {
   );
   User.findOne({ username: req.body.username })
     .then(user => {
-      if (!user) {
-        if (debug) console.log("Authentication failed: no user found.");
-        return res.status(404).json({
-          message: ("No user with username " + req.body.username + " found.")
-        });
-      } else if (!user.isActive) {
-        return res.status(401).json({ message: "User not activated." });
-      }
-      fetchedUser = user;
-      return bcrypt.compare(req.body.password, user.password);
-    })
-    .then(result => {
-      if (!result) {
-		if (debug) console.log("Authentication failed: incorrect password.");
-        return res.status(401).json({
-          message: "Auth failed"
-        });
-      }
-      const token = jwt.sign(
-        {
-          username: fetchedUser.username,
-          email: fetchedUser.email,
-          userId: fetchedUser._id,
-          isAdmin: fetchedUser.isAdmin
-        },
-        config.jwtSecret,
-        { expiresIn: "1h" }
-      );
-      res.status(200).json({
-        token: token,
-        expiresIn: 3600,
-		userData: {
-            id: fetchedUser._id,
-            username: fetchedUser.username,
-            email: fetchedUser.email
+        if (!user || !user.isActive) {
+            return res.status(401).json({
+                message: "Auth failed"
+            });
+        } else if (!bcrypt.compare(req.body.password, user.password)) {
+            return res.status(401).json({
+                message: "Auth failed"
+            });
+        } else {
+            fetchedUser = user;
+            const token = jwt.sign(
+                {
+                    username: fetchedUser.username,
+                    email: fetchedUser.email,
+                    userId: fetchedUser._id,
+                    isAdmin: fetchedUser.isAdmin
+                },
+                config.jwtSecret,
+                { expiresIn: "1h" }
+            );
+            res.status(200).json({
+                token: token,
+                expiresIn: 3600,
+                userData: {
+                    id: fetchedUser._id,
+                    username: fetchedUser.username,
+                    email: fetchedUser.email
+                }
+            });
         }
-      });
     })
     .catch(err => {
 		if (debug) console.log("Authentication failed: other error.");
