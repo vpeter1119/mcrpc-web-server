@@ -100,6 +100,7 @@ router.get("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
     var isValidId = ValidateId(id, res);
     if (isValidId) {
         const index = req.params.index;
+        if (debug) console.log(`GET data for ${id}/${index}`);
         if (debug) console.log("index="+index);
         User.findById(id, (err, foundUser) => {
             if (!err && foundUser) {
@@ -126,6 +127,60 @@ router.get("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
             }
         })
     }    
+})
+// UPDATE CHARACTER DATA
+router.put("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
+    const id = req.params.id;
+    var isValidId = ValidateId(id, res);
+    var updateData = req.body;
+    if (isValidId) {
+        const index = req.params.index;
+        User.findById(id, (err, foundUser) => {
+            if (!err && foundUser) {
+                let character = foundUser.desperados.characters.find(character => {
+                    return character.index == index;
+                });
+                if (character) {
+                    // Update and save character
+                    var pos = foundUser.desperados.characters.map(function (e) { return e.index; }).indexOf(index);
+                    foundUser.desperados.characters[pos] = updateData;
+                    // .save() only works if modified path is marked
+                    foundUser.markModified('desperados.characters');
+                    foundUser.save((err, updatedUser) => {
+                        if (!err && updatedUser) {
+                            // OK
+                            let updatedCaracter = updatedUser.desperados.characters.find(character => {
+                                return character.index == index;
+                            });
+                            res.status(200).json({
+                                ok: true,
+                                message: "Character data updated.",
+                                result: updatedCaracter,
+                            });
+                        } else {
+                            // Server error
+                            if (debug && err) console.log(err);
+                            res.status(500).json({
+                                ok: false,
+                                message: HandleError(err.code) || "No error message.",
+                            })
+                        }
+                    });
+                } else {
+                    res.status(404).json({
+                        ok: false,
+                        message: "Character not found."
+                    })
+                }
+            } else {
+                if (err && debug) console.log(err);
+                res.status(404).json({
+                    ok: false,
+                    message: "User not found.",
+                });
+            }
+        })
+    }
 })
 
 // RULES
@@ -172,7 +227,7 @@ router.get("/", (req,res) => {
 //////// ROUTES END ////////
 
 // Map data to exclude keys like "_id" from the response
-function MapData(data) {
+function MapUserData(data) {
     let mappedData;
     if (data.length) {
         // This means data is an array
