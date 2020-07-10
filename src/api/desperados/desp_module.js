@@ -26,7 +26,7 @@ router.post("/users/:id/characters", CheckAuth, (req, res, next) => {
         const input = req.body;
         const template = templates.find((temp) => {
             return temp.name == input.template;
-        });
+        }) || {};
         const character = {
             index: _.kebabCase(input.name),
             name: input.name,
