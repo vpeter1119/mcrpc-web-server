@@ -227,6 +227,24 @@ router.get("/spells", (req, res) => {
     });
 })
 
+router.get("/spells/:index", (req, res) => {
+    const index = req.params.index;
+    let spellData = spells.find(spell => {
+        return spell.index == index;
+    }) || null;
+    if (spellData) {
+        res.status(200).json({
+            ok: true,
+            result: spellData
+        });
+    } else {
+        res.status(404).json({
+            ok: false,
+            message: `Spell with index '${index}' not found.`
+        });
+    }
+})
+
 // MISC
 
 router.get("/", (req,res) => {
