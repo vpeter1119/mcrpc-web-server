@@ -6,6 +6,7 @@ const CheckAuth = require("../auth/check-auth");
 let attributes = require("./data/attributes.json");
 let templates = require("./data/templates.json");
 let skills = require("./data/skills.json");
+let spells = require("./data/spells.json");
 
 // Import dependencies
 var router = require("express").Router();
@@ -189,7 +190,8 @@ router.get("/rules", (req, res) => {
     const rulesData = {
         attributes: attributes,
         templates: templates,
-        skill: skills
+        skill: skills,
+        spells: spells
     }
     res.status(200).json({
         ok: true,
@@ -215,6 +217,13 @@ router.get("/skills", (req, res) => {
     res.status(200).json({
         ok: true,
         result: skills
+    });
+})
+
+router.get("/spells", (req, res) => {
+    res.status(200).json({
+        ok: true,
+        result: spells
     });
 })
 

@@ -1,7 +1,7 @@
 [
   {
     "name": "gunslinger",
-    "desc": "Gunslingers are archetypical Wild West characters and thus a fairly classic template. You might be a cowboy driving the cattle baron&#39;s longhorn herds across the prairie, or a bounty hunter chasing down outlaws, or a sheriff who sees to it that law and order have the rule of the town. In all cases, your shooting iron is loose and you love to solve problems with a gun in hand. Alternatively, you could be on the other side of the law, and spend your time constantly fending off all those marshals and bounty hunters trying to track you down.",
+    "desc": "Gunslingers are archetypical Wild West characters and thus a fairly classic template. You might be a cowboy driving the cattle baron\u0027s longhorn herds across the prairie, or a bounty hunter chasing down outlaws, or a sheriff who sees to it that law and order have the rule of the town. In all cases, your shooting iron is loose and you love to solve problems with a gun in hand. Alternatively, you could be on the other side of the law, and spend your time constantly fending off all those marshals and bounty hunters trying to track you down.",
     "mods": [
       {
         "attribute": "agility",
@@ -23,7 +23,7 @@
     "specials": [
       {
         "name": "Distraction",
-        "desc": "In lieu of an attack in Tactical Combat, you may carry out a Distraction. In game terms, this works exactly like an attack, but in case of a Failure or Success, the opponent can’t cause damage. If your roll succeeds, you may change up to three opponents’ Fields of Vision in any way you like. A Distraction can be performed from cover."
+        "desc": "In lieu of an attack in Tactical Combat, you may carry out a Distraction. In game terms, this works exactly like an attack, but in case of a Failure or Success, the opponent can't cause damage. If your roll succeeds, you may change up to three opponents' Fields of Vision in any way you like. A Distraction can be performed from cover."
       },
       {
         "name": "Duel Pistols",
@@ -33,7 +33,7 @@
   },
   {
     "name": "trapper",
-    "desc": "Trappers are dedicated hunters of all kinds of animals. They are proficient with rifles, experts at setting traps, and quite capable to survive even if entirely left to their own devices. Some trappers are mostly focusing on trading rare furs, while others chase big game such as the large herds of buffalo that roam the prairies. Most trappers prefer a solitary, secluded existence, but quite often they are faithful souls; anyone who becomes a trapper’s comrade is likely to have found a faithful friend right until they die.",
+    "desc": "Trappers are dedicated hunters of all kinds of animals. They are proficient with rifles, experts at setting traps, and quite capable to survive even if entirely left to their own devices. Some trappers are mostly focusing on trading rare furs, while others chase big game such as the large herds of buffalo that roam the prairies. Most trappers prefer a solitary, secluded existence, but quite often they are faithful souls; anyone who becomes a trapper\u0027s comrade is likely to have found a faithful friend right until they die.",
     "mods": [
       {
         "attribute": "brawn",
@@ -59,7 +59,7 @@
       },
       {
         "name": "Animal Call",
-        "desc": "In lieu of an attack in Tactical Combat, you may make an Animal Call. In game terms, this works exactly like an attack, but in the case of a Failure or Success the opponent can’t cause damage. If your roll succeeds, you may move one opponent in any direction you like. An Animal Call can be performed from cover."
+        "desc": "In lieu of an attack in Tactical Combat, you may make an Animal Call. In game terms, this works exactly like an attack, but in the case of a Failure or Success the opponent can't cause damage. If your roll succeeds, you may move one opponent in any direction you like. An Animal Call can be performed from cover."
       }
     ]
   },
@@ -91,13 +91,13 @@
       },
       {
         "name": "Disguise",
-        "desc": "Use of this skill permits you to move through an opponent’s Fields of Vision without having to take Automatic damage as a consequence of a failure in combat."
+        "desc": "Use of this skill permits you to move through an opponent's Fields of Vision without having to take Automatic damage as a consequence of a failure in combat."
       }
     ]
   },
   {
     "name": "mountebank",
-    "desc": "Out in the vast prairies in the small towns of the Wild West, medical care is a rare commodity. It’s hardly surprising then, that many a traveling salesman comes upon the idea to improve their earnings by selling all sorts of snake oils and panaceas that are alleged to alleviate or even cure afflictions. Some of these traveling apothecaries really do have some medical knowledge, and might have a basic understanding of biology or chemistry. Many of them, however, are simply crooks who are out to con the gullible for their money.",
+    "desc": "Out in the vast prairies in the small towns of the Wild West, medical care is a rare commodity. It's hardly surprising then, that many a traveling salesman comes upon the idea to improve their earnings by selling all sorts of snake oils and panaceas that are alleged to alleviate or even cure afflictions. Some of these traveling apothecaries really do have some medical knowledge, and might have a basic understanding of biology or chemistry. Many of them, however, are simply crooks who are out to con the gullible for their money.",
     "mods": [
       {
         "attribute": "mettle",

@@ -42,7 +42,7 @@
   {
     "name": "mechanics",
     "attributes": [ "agility", "wits" ],
-    "desc": "The Mechanics skill covers both unerstanding and knowledge of the workings of mechanical contraptions, and the ability to carry out minor mechanical repairs."
+    "desc": "The Mechanics skill covers both understanding and knowledge of the workings of mechanical contraptions, and the ability to carry out minor mechanical repairs."
   },
   {
     "name": "medicine",
