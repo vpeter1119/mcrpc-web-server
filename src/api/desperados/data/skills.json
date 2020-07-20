@@ -30,7 +30,7 @@
     "desc": "This skill lets your character ride safely on all sorts of mounts. It also covers common knowledge about how to handle and tend ti riding animals."
   },
   {
-    "name": "humanitites",
+    "name": "humanities",
     "attributes": [ "wits", "insight" ],
     "desc": "The Humanities skill covers all knowledge about religion, history or literature."
   },
