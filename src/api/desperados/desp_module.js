@@ -25,7 +25,7 @@ router.post("/users/:id/characters", CheckAuth, (req, res, next) => {
     if (isValidId) {
         const input = req.body;
         const template = templates.find((temp) => {
-            return temp.name == input.template;
+            return temp.name == input.template.name;
         }) || {};
         const character = {
             index: _.kebabCase(input.name),
@@ -35,7 +35,7 @@ router.post("/users/:id/characters", CheckAuth, (req, res, next) => {
             template: template,
             attributes: input.attributes || {},
             skills: input.skills || [],
-            special: template.specials || [],
+            special: input.specials || [],
             equipment: input.equipment || [],
         }
         if (debug) console.log(character);
