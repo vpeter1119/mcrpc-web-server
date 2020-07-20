@@ -35,7 +35,7 @@ router.post("/users/:id/characters", CheckAuth, (req, res, next) => {
             template: template,
             attributes: input.attributes || {},
             skills: input.skills || [],
-            special: input.specials || [],
+            special: input.special || [],
             equipment: input.equipment || [],
         }
         if (debug) console.log(character);
