@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const debug = global.debug;
 const _ = require("lodash");
-const CheckAuth = require("../auth/check-auth");
+// This skips authentication in development environment, will remove later
+let CheckAuth = debug ? function (req, res, next) { next(); } : require("../auth/check-auth");
 
 let attributes = require("./data/attributes.json");
 let templates = require("./data/templates.json");
@@ -74,10 +75,13 @@ router.get("/users/:id/characters", CheckAuth, (req, res, next) => {
             if (!err && foundUser) {
                 if (debug) console.log(foundUser);
                 let characters = foundUser.desperados.characters;
-                if (characters) {
+                let filteredCharacters = characters.filter(character => {
+                    return !character.isDeleted;
+                })
+                if (filteredCharacters) {
                     res.status(200).json({
                         ok: true,
-                        result: MapCharacterData(characters)
+                        result: MapCharacterData(filteredCharacters)
                     });
                 } else {
                     res.status(404).json({
@@ -108,7 +112,7 @@ router.get("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
                 let character = foundUser.desperados.characters.find(character => {
                     return character.index == index;
                 });
-                if (character) {
+                if (character && !character.isDeleted) {
                     res.status(200).json({
                         ok: true,
                         result: MapCharacterData(character)
@@ -157,6 +161,55 @@ router.put("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
                                 ok: true,
                                 message: "Character data updated.",
                                 result: updatedCaracter,
+                            });
+                        } else {
+                            // Server error
+                            if (debug && err) console.log(err);
+                            res.status(500).json({
+                                ok: false,
+                                message: HandleError(err.code) || "No error message.",
+                            })
+                        }
+                    });
+                } else {
+                    res.status(404).json({
+                        ok: false,
+                        message: "Character not found."
+                    })
+                }
+            } else {
+                if (err && debug) console.log(err);
+                res.status(404).json({
+                    ok: false,
+                    message: "User not found.",
+                });
+            }
+        })
+    }
+})
+// DELETE CHARACTER
+router.delete("/users/:id/characters/:index", CheckAuth, (req, res, next) => {
+    const id = req.params.id;
+    var isValidId = ValidateId(id, res);
+    if (isValidId) {
+        const index = req.params.index;
+        User.findById(id, (err, foundUser) => {
+            if (!err && foundUser) {
+                let character = foundUser.desperados.characters.find(character => {
+                    return character.index == index;
+                });
+                if (character) {
+                    // Update and save character
+                    var pos = foundUser.desperados.characters.map(function (e) { return e.index; }).indexOf(index);
+                    foundUser.desperados.characters[pos].isDeleted = true;
+                    // .save() only works if modified path is marked
+                    foundUser.markModified('desperados.characters');
+                    foundUser.save((err, updatedUser) => {
+                        if (!err && updatedUser) {
+                            // OK
+                            res.status(200).json({
+                                ok: true,
+                                message: "Character deleted.",
                             });
                         } else {
                             // Server error
