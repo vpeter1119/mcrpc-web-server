@@ -1,7 +1,7 @@
 [
   {
     "name": "gunslinger",
-    "desc": "Gunslingers are archetypical Wild West characters and thus a fairly classic template. You might be a cowboy driving the cattle baron’s longhorn herds across the prairie, or a bounty hunter chasing down outlaws, or a sheriff who sees to it that law and order have the rule of the town. In all cases, your shooting iron is loose and you love to solve problems with a gun in hand. Alternatively, you could be on the other side of the law, and spend your time constantly fending off all those marshals and bounty hunters trying to track you down.",
+    "desc": "Gunslingers are archetypical Wild West characters and thus a fairly classic template. You might be a cowboy driving the cattle baron&#39;s longhorn herds across the prairie, or a bounty hunter chasing down outlaws, or a sheriff who sees to it that law and order have the rule of the town. In all cases, your shooting iron is loose and you love to solve problems with a gun in hand. Alternatively, you could be on the other side of the law, and spend your time constantly fending off all those marshals and bounty hunters trying to track you down.",
     "mods": [
       {
         "attribute": "agility",
