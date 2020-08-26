@@ -1,0 +1,44 @@
+[
+  {
+    "index": "connect",
+    "name": "Connect",
+    "desc": "In lieu of an attack in Tactical Combat, you may cast the Connect spell. In game terms, Connect works exactly like an attack, but in case of a Failure or Success, the opponent can\u0027t cause damage. On a Success, you manage to use your blowpipe and shoot two opponents with enchanted darts. They are connected from now on. Only henchmen can be connected; this spell cannot be used on bosses. If one of the two henchmen is incapacitated or targeted with a special skill, this also affects the other henchmen. The Connect spell can be cast from cover.",
+    "test": "Opponent\u0027s difficulty level",
+    "costs": "1 Strength of Nerve"
+  },
+  {
+    "index": "mind-control",
+    "name": "Mind Control",
+    "desc": "You take control of one henchman. You can now command their every action, should you wish to do so. You can even have them attack their own fellows. It is not possible to Mind Control bosses. This spell can also be used outside of Tactical Combat. The Mind Control spell can be cast from cover.",
+    "test": "Opponent\u0027s difficulty level",
+    "costs": "1 Hit Point"
+  },
+  {
+    "index": "black-cat",
+    "name": "Black Cat",
+    "desc": "You summon a Loa in the shape of a little black cat. In Tactical Combat, the Black Cat can use the special skills of Distractionand Animal Call. Outside of Tactical Combat, it may execute simple commands like having it guard something or distract someone. The Black Cat stays and is bound to your command for two hours, then vanishes again. At no time can you summon more than one Black Cat.",
+    "test": "Difficulty 14",
+    "costs": "None"
+  },
+  {
+    "index": "hands-of-healing",
+    "name": "Hands of Healing",
+    "desc": "Putting your hands onto somebody’s wounds, you chant special prayers. A character who receives this kind of emergency care immediately recovers a number of Hit Points equal to the roll on one dice. You cannot use this spell to heal yourself.",
+    "test": "Difficulty 17",
+    "costs": "1 Hit"
+  },
+  {
+    "index": "voodoo-doll",
+    "name": "Voodoo Doll",
+    "desc": "From straw and cloth, you create a little doll and connect it through your prayers with an opponent. Enchanting the doll takes about one hour, so it\u0027s not feasible to create a Voodoo Doll in a combat situation. In lieu of an attack in Tactical Combat, you may destroy a Voodoo Doll that you already have. If the opponent who is connected with the doll is a henchman, they are automatically taken out; bosses are left incapacitated. The Voodoo Doll spell can be cast from cover, and can be used outside of Tactical Combat.",
+    "test": "Difficulty 11",
+    "costs": "1 Hit"
+  },
+  {
+    "index": "divination",
+    "name": "Divination",
+    "desc": "You ask the Loa about the future, and their advice is advantageous for you and your friends. Before Tactical Combat begins, you may change the Field of Vision of up to three opponents. The Divination spell can be cast from cover.",
+    "test": "Difficulty 14",
+    "costs": "1 Strength of Nerve"
+  }
+]

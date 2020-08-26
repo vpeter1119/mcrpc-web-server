@@ -1,0 +1,77 @@
+[
+  {
+    "name": "athletics",
+    "attributes": [ "brawn", "agility", "mettle" ],
+    "desc": "Athletics covers all kinds of sporting activities as well as acrobatic feats, climbing, and jumping."
+  },
+  {
+    "name": "arts",
+    "attributes": [ "wits", "agility" ],
+    "desc": "The Arts skill includes both encyclopedic knowledge about artists and all kinds of arts plus the character's own artistic proficiency. It covers both recognizing a melody as well as creating a new one of you own."
+  },
+  {
+    "name": "conceal",
+    "attributes": [ "agility" ],
+    "desc": "The Conceal skill is helpful not only for moving around undetected, but also for hiding objects from prying eyes."
+  },
+  {
+    "name": "empathy",
+    "attributes": [ "insight" ],
+    "desc": "Empathy renders all sorts of social interaction easier when charm and appeal if called for, and also includes the ability to train animals."
+  },
+  {
+    "name": "explosives",
+    "attributes": [ "brawn", "wits", "insight" ],
+    "desc": "This skill allows a character to use explosives. It includes both preparation and placement of explosive charges, and knowledge about storage, handling , and appropriate dosage of various types of explosives like black powder and nitroglycerine."
+  },
+  {
+    "name": "horsemanship",
+    "attributes": [ "agility", "wits" ],
+    "desc": "This skill lets your character ride safely on all sorts of mounts. It also covers common knowledge about how to handle and tend ti riding animals."
+  },
+  {
+    "name": "humanities",
+    "attributes": [ "wits", "insight" ],
+    "desc": "The Humanities skill covers all knowledge about religion, history or literature."
+  },
+  {
+    "name": "intimidate",
+    "attributes": [ "brawn", "resolve" ],
+    "desc": "This skill provides advantages in social interactions, be it through threatening behavior, or menacing eloquence, to convince someone to do (or not do) something... or else."
+  },
+  {
+    "name": "mechanics",
+    "attributes": [ "agility", "wits" ],
+    "desc": "The Mechanics skill covers both understanding and knowledge of the workings of mechanical contraptions, and the ability to carry out minor mechanical repairs."
+  },
+  {
+    "name": "medicine",
+    "attributes": [ "agility", "wits", "insight" ],
+    "desc": "Medicine allows a character to recognize diseases. It also includes knowledge of common drugs, medications, and other types of therapy. Medicine also extends to measures of First Aid."
+  },
+  {
+    "name": "perception",
+    "attributes": [ "insight" ],
+    "desc": "The Perception skill increases the likelihood for the character to detect something with their natural senses. It includes methods like sharp hearing, an acute sense of danger, and the eyes of a hawk."
+  },
+  {
+    "name": "science",
+    "attributes": [ "wits" ],
+    "desc": "Science includes knowledge of a wide range of common natural sciences, such as biology, chemistry, and physics, as well as astronomy and anthropology."
+  },
+  {
+    "name": "survival",
+    "attributes": [ "brawn", "agility", "wits", "insight" ],
+    "desc": "Survival helps a character to stay alive in the wilderness, between the lonesome towns of the Wild West. It includes hunting techniques, reading tracks, and selecting and securing a suitable campsite."
+  },
+  {
+    "name": "melee",
+    "attributes": [ "brawn", "agility", "wits" ],
+    "desc": "Melee indicates proficiency in the use of melee weapons and martial arts techniques including fistcuffs. In addition, it covers knowledge of types of melee wapons and schools of martial arts."
+  },
+  {
+    "name": "ranged-combat",
+    "attributes": [ "agility", "wits" ],
+    "desc": "The Ranged Combat skill indicates essential proficiency in the use of missile weapons of all kinds. It covers knowledge about use and maintenance of any given weapon, but also general knowledge of gun laws."
+  }
+]
