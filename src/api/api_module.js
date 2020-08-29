@@ -12,13 +12,13 @@ const notes = require("./notes/notes_module");
 
 // Declare the API endpoints and import the modules
 router.use("/auth", auth);
-router.use("/beverages", beverages);
-router.use("/desperados", desperados);
-router.use("/geojson", geojson);
+router.use("/beverages", beverages.router);
+router.use("/desperados", desperados.router);
+router.use("/geojson", geojson.router);
 router.use("/generate", generate.router);
-router.use("/inventory", inventory);
-router.use("/moments", moments);
-router.use("/notes", notes);
+router.use("/inventory", inventory.router);
+router.use("/moments", moments.router);
+router.use("/notes", notes.router);
 
 // Get information on API endpoints
 var emptyProps = {

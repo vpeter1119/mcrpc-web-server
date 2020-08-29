@@ -15,6 +15,13 @@ var router = require("express").Router();
 // Import mongoose model
 const User = require("../auth/user_model");
 
+// Define properties
+const properties = {
+    name: "desperados",
+    desc: "Character creation and rules data for Desperados Roleplaying Game.",
+    methods: ["GET","POST","PUT","DELETE"]
+}
+
 ///////// ROUTES BEGIN ////////
 
 // CHARACTERS
@@ -378,4 +385,7 @@ function ValidateId(id, res) {
 }
 
 // Export router
-module.exports = router;
+module.exports = {
+    router,
+    properties
+};

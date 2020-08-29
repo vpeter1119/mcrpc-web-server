@@ -7,6 +7,13 @@ var router = require("express").Router();
 // Import mongoose model
 const Note = require("./note_model.js");
 
+// Define properties
+const properties = {
+    name: "notes",
+    desc: "Store and recall notes based on categories.",
+    methods: ["GET","POST"],
+}
+
 ///////// ROUTES BEGIN ////////
 
 // READ ALL
@@ -100,4 +107,7 @@ function MapData(data) {
 }
 
 // Export router
-module.exports = router;
+module.exports = {
+    router,
+    properties
+};

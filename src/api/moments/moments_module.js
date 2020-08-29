@@ -6,6 +6,13 @@ var router = require("express").Router();
 // Import mongoose model
 const Moment = require("./moment_model.js");
 
+// Define properties
+const properties = {
+    name: "moments",
+    desc: "Memorable moments from MCRPC sessions.",
+    methods: ["GET"]
+}
+
 ///////// ROUTES BEGIN ////////
 
 // READ ALL
@@ -51,4 +58,7 @@ function MapData(data) {
 }
 
 // Export router
-module.exports = router;
+module.exports = {
+    router,
+    properties
+};

@@ -8,6 +8,13 @@ var router = require("express").Router();
 // Import mongoose model
 const Inventory = require("./inventory_model.js");
 
+// Define properties
+const properties = {
+    name: "inventory",
+    desc: "Inventory manager for Dungeons and Dragons Fifth Edition.",
+    methods: ["GET","POST"]
+}
+
 ///////// ROUTES BEGIN ////////
 
 // READ ALL
@@ -133,4 +140,7 @@ function HandleError(code) {
 }
 
 // Export router
-module.exports = router;
+module.exports = {
+    router,
+    properties
+};

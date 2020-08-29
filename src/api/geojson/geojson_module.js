@@ -8,6 +8,13 @@ var router = require("express").Router();
 // Import mongoose model
 const GeoJSON = require("./geojson_model.js");
 
+// Define properties
+var properties = {
+    name: "geojson",
+    desc: "GeoJSON data for custom fantasy maps.",
+    methods: ["GET","POST"]
+}
+
 ///////// ROUTES BEGIN ////////
 
 // READ ALL
@@ -124,4 +131,7 @@ function MapData(data) {
 }
 
 // Export router
-module.exports = router;
+module.exports = {
+    router,
+    properties
+};
