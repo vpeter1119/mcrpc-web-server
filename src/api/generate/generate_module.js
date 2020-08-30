@@ -24,7 +24,7 @@ const properties = {
 ///////// ROUTES BEGIN ////////
 
 router.get("/name", (req, res, next) => {
-    var language = req.query.lang || "testlang";
+    var language = req.query.lang || "test";
     var name = GenerateName(language);
     res.send(`Here's a randomly generated name in ${language}:\n\n${name}`);
 })
