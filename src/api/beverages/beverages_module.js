@@ -6,6 +6,13 @@ var router = require("express").Router();
 // Import mongoose model
 const Beverage = require("./beverage_model");
 
+// Define properties
+const properties = {
+    name: "beverages",
+    desc: "Beverages data for fun. Includes beverage name, types and containers.",
+    methods: ["GET","POST"]
+}
+
 ///////// ROUTES BEGIN ////////
 
 // READ ALL
@@ -52,4 +59,7 @@ function MapData(data) {
 }
 
 // Export router
-module.exports = router;
+module.exports = {
+    router,
+    properties
+};
