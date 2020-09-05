@@ -1,0 +1,34 @@
+{
+	"name":	"Draconic",
+	"id":"DRAC",
+	"desc":"Language of the Dragons.",
+	"phonology": {
+		"inventory":{
+			"vowels":{
+				"low": ["a","aa","ah","o","oo","u","uu"],
+				"mid": [],
+				"high": ["e","ei","ey","i","ii"]
+			},
+			"consonants":{
+				"nasals":["m","n"],
+				"fricatives":["f","v","h","j","s","z"],
+				"affricates":["b","p","d","t","g","k"],
+				"approximants":["r","l"]
+			}
+		},
+		"phonotactics":{
+			"onsets":[["consonants","affricates"],["consonants","fricatives"],["consonants","nasals"],["consonants","approximants"]],
+			"nuclei":[["vowels","low"],["vowels","high"]],
+			"codas":[[],["consonants","approximants"],["consonants","fricatives"]]
+		},
+		"constraints":{
+			"noDoubleNucleus":true
+		},
+		"other":{
+			"maxWordLength": 2
+		}
+	},
+	"config": {
+		"adjustTypes": 2
+	}
+}

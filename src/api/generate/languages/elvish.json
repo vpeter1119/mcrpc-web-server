@@ -1,0 +1,38 @@
+{
+	"name":	"Kherret Elvish",
+	"id":"KRELV",
+	"desc":"Language of the Elves of Kherret.",
+	"phonology": {
+		"inventory":{
+			"vowels":{
+				"low": ["a","o","u"],
+				"mid": [],
+				"high": ["e","i","y"]
+			},
+			"consonants":{
+				"glides":["bw","tw","dw","dhw","cw","gw"],
+				"liquids":["bl","br","pr","tr","dl","dr","cl","cr","gl","gr"],
+				"nasals":["m","n","nn"],
+				"fricatives":["f","v","th","s","ch"],
+				"affricates":["b","p","t","d","dh","c","g"],
+				"approximants":["r","l"]
+			}
+		},
+		"phonotactics":{
+			"onsets":[[],["consonants","fricatives"],["consonants","approximants"],["consonants","affricates"],["consonants","liquids"],["consonants","glides"],["consonants","nasals"]],
+			"nuclei":[["vowels","low"],["vowels","high"]],
+			"codas":[[],["consonants","approximants"],["consonants","nasals"]]
+		},
+		"constraints":{
+			"noLiquidAfterCoda":true,
+			"noGlideafterCoda":true,
+			"noDoubleNucleus":true
+		},
+		"other":{
+			"maxWordLength":3
+		}
+	},
+	"config": {
+		"adjustTypes": 2
+	}
+}
