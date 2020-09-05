@@ -1,0 +1,36 @@
+{
+	"name":	"Dwarvish",
+	"id":"DWAR",
+	"desc":"Language of the Dwarves.",
+	"phonology": {
+		"inventory":{
+			"vowels":{
+				"low": ["a","o","u"],
+				"low-special": ["â","ô","û"],
+				"mid": ["ai"],
+				"high": ["e","i"],
+				"high-special": ["ê","î"]
+			},
+			"consonants":{
+				"nasals":["m","n"],
+				"fricatives":["f","h","s","z","sh"],
+				"affricates":["b","d","t","th","g","k","kh"],
+				"approximants":["r","l"]
+			}
+		},
+		"phonotactics":{
+			"onsets":[["consonants","affricates"],["consonants","fricatives"],["consonants","nasals"]],
+			"nuclei":[["vowels","low"],["vowels","high"],["vowels","low-special"],["vowels","high-special"],["vowels","mid"]],
+			"codas":[[],["consonants","approximants"],["consonants","fricatives"]]
+		},
+		"constraints":{
+			"noDoubleNucleus":true
+		},
+		"other":{
+			"maxWordLength": 2
+		}
+	},
+	"config": {
+		"adjustTypes": 2
+	}
+}
