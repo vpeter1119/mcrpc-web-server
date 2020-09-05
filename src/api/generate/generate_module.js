@@ -24,7 +24,7 @@ const properties = {
 
 ///////// ROUTES BEGIN ////////
 
-router.get("/:lang/name", (req, res, next) => {
+router.get("/name/:lang", (req, res, next) => {
     var language = req.param.lang || "default";
     var name = GenerateName(language);
     res.send(`Here's a randomly generated name in ${language}:\n\n${name}`);
@@ -36,7 +36,7 @@ router.get("/name", (req, res, next) => {
     res.send(`Here's a randomly generated name in ${language}:\n\n${name}`);
 });
 
-router.get("/:lang/text", (req, res, next) => {
+router.get("/text/:lang", (req, res, next) => {
     var language = req.param.lang || "default";
     var text = GenerateText(language);
     res.send(text);
