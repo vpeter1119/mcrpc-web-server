@@ -3,6 +3,7 @@ const _ = require("lodash");
 const falagico = require("falagico");
 
 const languages = {
+    default: falagico.languages.Default,
     elvish: falagico.languages.Elvish,
     test: falagico.languages.TestLang
 }
@@ -23,11 +24,29 @@ const properties = {
 
 ///////// ROUTES BEGIN ////////
 
-router.get("/name", (req, res, next) => {
-    var language = req.query.lang || "test";
+router.get("/:lang/name", (req, res, next) => {
+    var language = req.param.lang || "default";
     var name = GenerateName(language);
     res.send(`Here's a randomly generated name in ${language}:\n\n${name}`);
-})
+});
+
+router.get("/name", (req, res, next) => {
+    var language = "default";
+    var name = GenerateName(language);
+    res.send(`Here's a randomly generated name in ${language}:\n\n${name}`);
+});
+
+router.get("/:lang/text", (req, res, next) => {
+    var language = req.param.lang || "default";
+    var text = GenerateText(language);
+    res.send(text);
+});
+
+router.get("/text", (req, res, next) => {
+    var language = "default";
+    var text = GenerateText(language);
+    res.send(text);
+});
 
 //////// ROUTES END ////////
 
@@ -52,4 +71,9 @@ function GenerateName(language) {
     }
     var name = (`${_.capitalize(firstName)} ${_.capitalize(lastName)}`);
     return name;
+}
+
+function GenerateText(language) {
+    var txt = (languages[language]) ? languages[language].Text() : '(language not found)';
+    return txt;
 }
