@@ -105,40 +105,28 @@ router.post("/", (req, res) => {
 router.put('/:id', checkAuth, (req, res) => {
     const input = req.body;
     const id = req.params.id;
-    let fetchOriginal = new Promise((resolve, reject) => {
-        GeoJSON.findOne({ _id: id }, (err, data) => {
-            if (!err && data) {
-                if (debug) console.log(data);
-                resolve(data);
-            } else {
-                if (err && debug) console.log(err);
-            }
-        });
-    });
-    fetchOriginal.then(originalData => {
-        let newData = originalData;
-        newData.properties = input;
-        if (debug) console.log(newData);
-        GeoJSON.updateOne({ _id: id }, newData, (err, raw) => {
-            if (!err && raw) {
-                if (debug) console.log(`Successfully updated ${id}`);
-                res.status(200).json({
-                    ok: true,
-                    message: `Successfully updated ${id}.`
-                })
-            } else {
-                if (debug && err) console.log(err);
-                res.status(500).json({
-                    ok: false,
-                    message: "Something went wrong when updating entry.",
-                    error: {
-                        code: err.code || 0,
-                        msg: HandleError(err.code) || "No error message."
-                    }
-                });
-            }
-        })
-    });
+    if (debug) console.log('id:', id,'input:', input);
+    GeoJSON.findOneAndUpdate({_id: id}, {'properties': input}, {new: true, upsert: true}, (err, newRecord) => {
+        if (!err && newRecord) {
+            if (debug) console.log(`Successfully updated ${id}`);
+            if (debug) console.log('newRecord: ', newRecord);
+            res.status(200).json({
+                ok: true,
+                message: `Successfully updated ${id}.`,
+                doc: newRecord
+            })
+        } else {
+            if (debug && err) console.log(err);
+            res.status(500).json({
+                ok: false,
+                message: "Something went wrong when updating entry.",
+                error: {
+                    code: err.code || 0,
+                    msg: HandleError(err.code) || "No error message."
+                }
+            });
+        }
+    })
 })
 
 
