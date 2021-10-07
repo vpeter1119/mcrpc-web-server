@@ -24,7 +24,9 @@ const geoJSONSchema = mongoose.Schema(
             maxZoom: Number,
             url: String,
             desc: String,
-            markerOptions: Object
+            markerOptions: Object,
+            category: String,
+            icon: String
         }
     },
     options
