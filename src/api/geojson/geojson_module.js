@@ -7,12 +7,13 @@ var router = require("express").Router();
 
 // Import mongoose model
 const GeoJSON = require("./geojson_model.js");
+const checkAuth = require("../auth/check-auth");
 
 // Define properties
 var properties = {
     name: "geojson",
     desc: "GeoJSON data for custom fantasy maps.",
-    methods: ["GET","POST"]
+    methods: ["GET","POST","PUT"]
 }
 
 ///////// ROUTES BEGIN ////////
@@ -101,6 +102,44 @@ router.post("/", (req, res) => {
     });
 });
 // UPDATE ONE
+router.put('/:id', checkAuth, (req, res) => {
+    const input = req.body;
+    const id = req.params.id;
+    let fetchOriginal = new Promise((resolve, reject) => {
+        GeoJSON.findOne({ _id: id }, (err, data) => {
+            if (!err && data) {
+                if (debug) console.log(data);
+                resolve(data);
+            } else {
+                if (err && debug) console.log(err);
+            }
+        });
+    });
+    fetchOriginal.then(originalData => {
+        let newData = originalData;
+        newData.properties = input;
+        if (debug) console.log(newData);
+        GeoJSON.updateOne({ _id: id }, newData, (err, raw) => {
+            if (!err && raw) {
+                if (debug) console.log(`Successfully updated ${id}`);
+                res.status(200).json({
+                    ok: true,
+                    message: `Successfully updated ${id}.`
+                })
+            } else {
+                if (debug && err) console.log(err);
+                res.status(500).json({
+                    ok: false,
+                    message: "Something went wrong when updating entry.",
+                    error: {
+                        code: err.code || 0,
+                        msg: HandleError(err.code) || "No error message."
+                    }
+                });
+            }
+        })
+    });
+})
 
 
 //////// ROUTES END ////////
@@ -114,6 +153,7 @@ function MapData(data) {
         mappedData = data.map(item => {
             // Decide what keys to include in response
             return {
+                id: item._id,
                 type: item.type,
                 geometry: item.geometry,
                 properties: item.properties
@@ -122,6 +162,7 @@ function MapData(data) {
     } else {
         // This is means data is a single object
         mappedData = {
+            id: data._id,
             type: data.type,
             geometry: data.geometry,
             properties: data.properties
